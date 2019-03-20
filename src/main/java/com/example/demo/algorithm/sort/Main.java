@@ -10,8 +10,8 @@ import java.util.stream.IntStream;
 
 public class Main {
 
-    private static final int LEN = 100000; // 随机数组长度
-    private static final int REPEATS = 1; // 重复测试次数
+    private static final int LEN = 10; // 随机数组长度
+    private static final int REPEATS = 2; // 重复测试次数
     private static int[] array = newArray(LEN);
     private static int[] correct;
 
@@ -27,11 +27,11 @@ public class Main {
     public static void main(String[] args) {
         List<SortTimeInfo> list = new ArrayList<>();
         list.add(test(copy(array), new QuickSorter()));
-        list.add(test(copy(array), new ShellSorter()));
-        list.add(test(copy(array), new MergeSorter()));
-        list.add(test(copy(array), new SelectionSorter()));
-        list.add(test(copy(array), new InsertionSorter()));
-        list.add(test(copy(array), new BubbleSorter()));
+//        list.add(test(copy(array), new ShellSorter()));
+//        list.add(test(copy(array), new MergeSorter()));
+//        list.add(test(copy(array), new SelectionSorter()));
+//        list.add(test(copy(array), new InsertionSorter()));
+//        list.add(test(copy(array), new BubbleSorter()));
 
         list.stream()
             .sorted(Comparator.comparing(SortTimeInfo::getAvg))
@@ -46,7 +46,7 @@ public class Main {
         for (int i = 0; i < REPEATS; i++) {
             int[] copy = copy(array);
             sorter.sort(copy);
-            // print(copy);
+             print(copy);
             if (!checkSorted(copy)) { // 检查排序结果是否正确
                 System.err.println(sorter.name() + "排序失败");
             }
